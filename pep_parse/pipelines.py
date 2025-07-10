@@ -1,3 +1,5 @@
+import csv
+
 from collections import defaultdict
 from pathlib import Path
 
@@ -27,7 +29,11 @@ class PepParsePipeline:
             mode='w',
             encoding='utf-8'
         ) as f:
-            f.write('Статус,Количество\n')
-            for status, count in sorted(self.status_count.items()):
-                f.write(f'{status},{count}\n')
-            f.write(f'Total,{self.total_peps}\n')
+            writer = csv.writer(f)
+            rows = [['Status', 'Quantity']]
+            rows.extend(
+                [status, count]
+                for status, count in sorted(self.status_count.items())
+            )
+            rows.append(['Total', self.total_peps])
+            writer.writerows(rows)
