@@ -75,4 +75,4 @@
 
 ## Автор
 
-- [Декапольцева Анастасия](https://github.com/IgorMogilin)
+- [Могилин Игорь](https://github.com/IgorMogilin)
